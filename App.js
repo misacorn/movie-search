@@ -1,34 +1,24 @@
-import React, { Component } from "react";
-import {
-  View,
-  FlatList,
-  Button,
-  TextInput,
-  TouchableHighlight,
-  StatusBar,
-  KeyboardAvoidingView
-} from "react-native";
+import React from "react";
+import { createAppContainer, createStackNavigator } from "react-navigation";
+import MovieList from "./MovieList";
+import MovieDetails from "./MovieDetails";
+import MovieSearch from "./MovieSearch";
 
-import styles from "./styles";
+const AppNavigator = createStackNavigator(
+  {
+    MovieSearch: MovieSearch,
+    MovieList: MovieList,
+    MovieDetails: MovieDetails
+  },
+  {
+    initialRouteName: "MovieSearch"
+  }
+);
 
-class App extends Component {
-  state = { movieTitle: "", movieList: [] };
+const AppContainer = createAppContainer(AppNavigator);
 
-  inputChange = text => {
-    this.setState({ movieTitle: text });
-  };
-
-  findMovie = () => {
-    console.log("hehe");
-  };
-
+export default class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <StatusBar translucent={false} barStyle="dark-content" />
-      </View>
-    );
+    return <AppContainer />;
   }
 }
-
-export default App;
