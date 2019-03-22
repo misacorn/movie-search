@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, Alert, FlatList, Text, Image } from "react-native";
+import {
+  View,
+  Alert,
+  FlatList,
+  Text,
+  Image,
+  TouchableHighlight
+} from "react-native";
 import { SearchBar } from "react-native-elements";
 
 import styles from "./styles";
@@ -47,21 +54,26 @@ class MovieList extends Component {
   _keyExtractor = (item, index) => item.id;
 
   _renderItem = ({ item }) => (
-    <View style={styles.itemList}>
-      <Image
-        style={styles.poster}
-        source={{
-          uri: "https://image.tmdb.org/t/p/original" + item.poster_path
-        }}
-      />
-      <View style={styles.briefInfo}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text>Released: {item.release_date.slice(0, 4)}</Text>
-        <Text style={{ color: item.vote_average >= 7 ? "green" : "red" }}>
-          Rating: {item.vote_average}
-        </Text>
+    <TouchableHighlight>
+      <View>
+        <View style={styles.itemList}>
+          <Image
+            style={styles.poster}
+            source={{
+              uri: "https://image.tmdb.org/t/p/original" + item.poster_path
+            }}
+          />
+          <View style={styles.briefInfo}>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text>{item.release_date.slice(0, 4)}</Text>
+            <Text style={{ color: item.vote_average >= 7 ? "green" : "red" }}>
+              Rating: {item.vote_average}
+            </Text>
+          </View>
+        </View>
+        <View style={styles.separator} />
       </View>
-    </View>
+    </TouchableHighlight>
   );
 
   render() {
@@ -81,6 +93,7 @@ class MovieList extends Component {
           data={this.state.list}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
+          // ItemSeparatorComponent={Separator}
         />
       </View>
     );
