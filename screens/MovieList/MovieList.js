@@ -11,6 +11,19 @@ class MovieList extends Component {
 
   state = { title: "", list: [] };
 
+  componentDidMount() {
+    const url =
+      "https://api.themoviedb.org/3/movie/popular?api_key=bf2e9e1f41e52b73e962e7a4c7d1e37b";
+    fetch(url)
+      .then(response => response.json())
+      .then(responseJson => {
+        this.setState({ list: responseJson.results });
+      })
+      .catch(err => {
+        Alert.alert(err);
+      });
+  }
+
   inputChange = title => {
     this.setState({ title });
     this.findMovie();
@@ -20,6 +33,7 @@ class MovieList extends Component {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=bf2e9e1f41e52b73e962e7a4c7d1e37b&query=${
       this.state.title
     }`;
+
     fetch(url)
       .then(response => response.json())
       .then(responseJson => {
@@ -29,6 +43,26 @@ class MovieList extends Component {
         Alert.alert(error);
       });
   };
+
+  _keyExtractor = (item, index) => item.id;
+
+  _renderItem = ({ item }) => (
+    <View style={styles.itemList}>
+      <Image
+        style={styles.poster}
+        source={{
+          uri: "https://image.tmdb.org/t/p/original" + item.poster_path
+        }}
+      />
+      <View style={styles.briefInfo}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text>Released: {item.release_date.slice(0, 4)}</Text>
+        <Text style={{ color: item.vote_average >= 7 ? "green" : "red" }}>
+          Rating: {item.vote_average}
+        </Text>
+      </View>
+    </View>
+  );
 
   render() {
     return (
@@ -43,20 +77,10 @@ class MovieList extends Component {
           cancelButtonTitle="Cancel"
         />
         <FlatList
-          style={{ marginLeft: "1%" }}
+          style={{ margin: "2%" }}
           data={this.state.list}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.itemList}>
-              <Text>{item.title}</Text>
-              <Image
-                style={styles.poster}
-                source={{
-                  uri: "https://image.tmdb.org/t/p/original" + item.poster_path
-                }}
-              />
-            </View>
-          )}
+          keyExtractor={this._keyExtractor}
+          renderItem={this._renderItem}
         />
       </View>
     );
