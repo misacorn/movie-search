@@ -3,6 +3,10 @@ import { View, StyleSheet, Alert } from "react-native";
 import { SearchBar, Header } from "react-native-elements";
 
 class MovieList extends Component {
+  static navigationOptions = {
+    title: 'Search movie'.toUpperCase(),
+  };
+  
   state = { title: "", list: [] };
 
   findMovie = () => {
@@ -22,15 +26,6 @@ class MovieList extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header
-          style={styles.header}
-          leftComponent={{ icon: "menu", color: "#A7AFB2" }}
-          centerComponent={{
-            text: "Search Movie",
-            style: { color: "#A7AFB2", fontSize: 25, fontWeight: "600" }
-          }}
-          backgroundColor="#fff"
-        />
         <SearchBar
           placeholder="Type movie title here..."
           onChangeText={title => this.setState({ title })}
