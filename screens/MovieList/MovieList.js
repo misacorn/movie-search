@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Alert, FlatList, Text, Image } from "react-native";
+import { View, Alert, FlatList, Text, Image } from "react-native";
 import { SearchBar } from "react-native-elements";
+
+import styles from "./styles";
 
 class MovieList extends Component {
   static navigationOptions = {
@@ -45,8 +47,14 @@ class MovieList extends Component {
           data={this.state.list}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <View>
+            <View style={styles.itemList}>
               <Text>{item.title}</Text>
+              <Image
+                style={styles.poster}
+                source={{
+                  uri: "https://image.tmdb.org/t/p/original" + item.poster_path
+                }}
+              />
             </View>
           )}
         />
@@ -56,7 +64,3 @@ class MovieList extends Component {
 }
 
 export default MovieList;
-
-const styles = StyleSheet.create({
-  container: {}
-});

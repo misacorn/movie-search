@@ -1,7 +1,7 @@
 import React from "react";
 import { createAppContainer, createStackNavigator } from "react-navigation";
-import MovieList from "./MovieList";
-import MovieDetails from "./MovieDetails";
+import MovieList from "./screens/MovieList/MovieList";
+import MovieDetails from "./screens/MovieDetails/MovieDetails";
 
 const AppNavigator = createStackNavigator(
   {
