@@ -13,7 +13,7 @@ import styles from "./styles";
 
 class MovieList extends Component {
   static navigationOptions = {
-    title: "Search movie".toUpperCase()
+    title: "Movies"
   };
 
   state = { title: "", list: [] };

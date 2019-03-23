@@ -19,7 +19,8 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: "600"
+    fontWeight: "500",
+    marginBottom: "5%"
   },
   poster: {
     width: 67,
