@@ -51,10 +51,10 @@ class MovieList extends Component {
       });
   };
 
-  _keyExtractor = (item, index) => item.id;
+  keyExtractor = (item, index) => item.id;
 
-  _renderItem = ({ item }) => (
-    <TouchableHighlight>
+  renderItem = ({ item }) => (
+    <TouchableHighlight onPress={this.props.navigation.navigate('MovieDetails')}>
       <View>
         <View style={styles.itemList}>
           <Image
@@ -91,8 +91,8 @@ class MovieList extends Component {
         <FlatList
           style={{ margin: "2%" }}
           data={this.state.list}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
+          keyExtractor={this.keyExtractor}
+          renderItem={this.renderItem}
           // ItemSeparatorComponent={Separator}
         />
       </View>
