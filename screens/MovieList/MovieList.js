@@ -54,7 +54,9 @@ class MovieList extends Component {
   keyExtractor = (item, index) => item.id;
 
   renderItem = ({ item }) => (
-    <TouchableHighlight onPress={this.props.navigation.navigate('MovieDetails')}>
+    <TouchableHighlight
+      onPress={() => this.props.navigation.navigate("MovieDetails")}
+    >
       <View>
         <View style={styles.itemList}>
           <Image
