@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19004,
-  "packagerPid": 75678,
-  "expoServerNgrokUrl": "https://ws-jgx.anonymous.movie-search.exp.direct",
-  "packagerNgrokUrl": "https://packager.ws-jgx.anonymous.movie-search.exp.direct",
-  "ngrokPid": 75692,
+  "packagerPort": 19001,
+  "packagerPid": 25115,
+  "expoServerNgrokUrl": "https://zx-gtf.anonymous.movie-search.exp.direct",
+  "packagerNgrokUrl": "https://packager.zx-gtf.anonymous.movie-search.exp.direct",
+  "ngrokPid": 25136,
   "webpackServerPort": null
 }

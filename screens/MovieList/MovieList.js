@@ -55,7 +55,10 @@ class MovieList extends Component {
 
   renderItem = ({ item }) => (
     <TouchableHighlight
-      onPress={() => this.props.navigation.navigate("MovieDetails")}
+      onPress={() => this.props.navigation.navigate("MovieDetails", {
+        id: item.id,
+        title: item.title
+      })}
     >
       <View>
         <View style={styles.itemList}>
