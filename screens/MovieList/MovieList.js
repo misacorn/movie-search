@@ -13,7 +13,7 @@ import styles from "./styles";
 
 class MovieList extends Component {
   static navigationOptions = {
-    title: "Movies"
+    title: "Home"
   };
 
   state = { title: "", list: [] };
@@ -55,10 +55,12 @@ class MovieList extends Component {
 
   renderItem = ({ item }) => (
     <TouchableHighlight
-      onPress={() => this.props.navigation.navigate("MovieDetails", {
-        id: item.id,
-        title: item.title
-      })}
+      onPress={() =>
+        this.props.navigation.navigate("MovieDetails", {
+          id: item.id,
+          title: item.title
+        })
+      }
     >
       <View>
         <View style={styles.itemList}>

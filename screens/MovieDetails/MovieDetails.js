@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 
 import styles from "./styles";
 
@@ -23,21 +23,34 @@ class MovieDetails extends Component {
 
   render() {
     const { data } = this.state;
-    console.log(data.release_date);
+    console.log(data.id);
     return (
       <View style={styles.itemList}>
-        {/* <Image
+        <Image
           style={styles.poster}
           source={{
             uri: "https://image.tmdb.org/t/p/original" + data.poster_path
           }}
-        /> */}
+        />
         <View style={styles.briefInfo}>
           <Text style={styles.title}>{data.title}</Text>
-          <Text>{data.release_date}</Text>
-          {/* <Text style={{ color: data.vote_average >= 7 ? "green" : "red" }}>
-            Rating: {data.vote_average}
-          </Text> */}
+          {data.release_date ? (
+            <Text style={styles.release_date}>
+              Released: {data.release_date.slice(0, 4)}
+            </Text>
+          ) : null}
+          <Text>Rating:</Text>
+          <Text
+            style={{
+              color: data.vote_average >= 7 ? "green" : "red",
+              fontSize: 35
+            }}
+          >
+            {data.vote_average} / 10
+          </Text>
+          {data.tagline ? (
+            <Text style={styles.tagline}>"{data.tagline}"</Text>
+          ) : null}
         </View>
       </View>
     );
