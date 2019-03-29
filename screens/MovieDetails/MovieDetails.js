@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, FlatList } from "react-native";
 
 import styles from "./styles";
 
@@ -24,6 +24,10 @@ class MovieDetails extends Component {
         Alert.alert(err);
       });
   }
+
+  keyExtractor = (item, index) => item.id;
+
+  renderItem = ({ item }) => <Text>{item.name}</Text>;
 
   render() {
     const { data } = this.state;
@@ -76,10 +80,16 @@ class MovieDetails extends Component {
               <Text>{data.spoken_languages.name}</Text>
             ) : null} */}
           </View>
-          <View style={styles.overview}>
-            <Text>Overview</Text>
-            <Text>{data.overview}</Text>
-          </View>
+        </View>
+        <View style={styles.overview}>
+          <Text>Genre:</Text>
+          <FlatList
+            data={this.state.data.genres}
+            keyExtractor={this.keyExtractor}
+            renderItem={this.renderItem}
+          />
+          <Text style={{ fontWeight: "bold" }}>Overview</Text>
+          <Text>{data.overview}</Text>
         </View>
       </View>
     );

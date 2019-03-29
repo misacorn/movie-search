@@ -5,7 +5,8 @@ const listWidth = (fullWidth * 1.25) / 2;
 
 export default StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    flexDirection: "column"
   },
   itemList: {
     flexDirection: "row",
@@ -44,7 +45,6 @@ export default StyleSheet.create({
     justifyContent: "center"
   },
   overview: {
-    width: fullWidth,
     marginRight: "2%",
     marginTop: "2%",
     marginLeft: "2%"
