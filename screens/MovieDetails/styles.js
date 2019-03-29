@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from "react-native";
 
-const fullWidth = (Dimensions.get("window").width * 1.25) / 2;
+const fullWidth = Dimensions.get("window").width;
+const listWidth = (fullWidth * 1.25) / 2;
 
 export default StyleSheet.create({
   container: {
@@ -8,7 +9,7 @@ export default StyleSheet.create({
   },
   itemList: {
     flexDirection: "row",
-    width: fullWidth,
+    width: listWidth,
     marginBottom: "2%",
     marginTop: "2%",
     marginLeft: "2%"
@@ -21,18 +22,31 @@ export default StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: "500",
-    marginBottom: "10%"
+    marginBottom: "20%"
   },
   poster: {
     width: 150,
     height: 225
   },
-  release_date: {
-    marginBottom: "10%"
-  },
   tagline: {
-    marginTop: "10%",
-    fontStyle: "italic",
-    fontSize: 15
+    marginBottom: "20%",
+    fontStyle: "italic"
+  },
+  infoColumn: {
+    flexDirection: "row",
+    marginRight: "2%",
+    marginTop: "2%",
+    marginLeft: "2%"
+  },
+  column: {
+    width: fullWidth / 3,
+    flexDirection: "column",
+    justifyContent: "center"
+  },
+  overview: {
+    width: fullWidth,
+    marginRight: "2%",
+    marginTop: "2%",
+    marginLeft: "2%"
   }
 });

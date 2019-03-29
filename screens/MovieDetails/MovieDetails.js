@@ -4,6 +4,10 @@ import { View, Text, Image } from "react-native";
 import styles from "./styles";
 
 class MovieDetails extends Component {
+  static navigationOptions = {
+    title: "Movie Details"
+  };
+
   state = { data: [] };
 
   componentDidMount() {
@@ -23,34 +27,59 @@ class MovieDetails extends Component {
 
   render() {
     const { data } = this.state;
-    console.log(data.id);
+    console.log(data.spoken_languages);
+    console.log(data.overview);
     return (
-      <View style={styles.itemList}>
-        <Image
-          style={styles.poster}
-          source={{
-            uri: "https://image.tmdb.org/t/p/original" + data.poster_path
-          }}
-        />
-        <View style={styles.briefInfo}>
-          <Text style={styles.title}>{data.title}</Text>
-          {data.release_date ? (
-            <Text style={styles.release_date}>
-              Released: {data.release_date.slice(0, 4)}
-            </Text>
-          ) : null}
-          <Text>Rating:</Text>
-          <Text
-            style={{
-              color: data.vote_average >= 7 ? "green" : "red",
-              fontSize: 35
+      <View style={styles.container}>
+        <View style={styles.itemList}>
+          <Image
+            style={styles.poster}
+            source={{
+              uri: "https://image.tmdb.org/t/p/original" + data.poster_path
             }}
-          >
-            {data.vote_average} / 10
-          </Text>
-          {data.tagline ? (
-            <Text style={styles.tagline}>"{data.tagline}"</Text>
-          ) : null}
+          />
+
+          <View style={styles.briefInfo}>
+            <Text style={styles.title}>{data.title}</Text>
+            {data.tagline ? (
+              <Text style={styles.tagline}>{data.tagline}</Text>
+            ) : null}
+
+            <Text>Rating:</Text>
+            <Text
+              style={{
+                color: data.vote_average >= 7 ? "green" : "red",
+                fontSize: 35
+              }}
+            >
+              {data.vote_average} / 10
+            </Text>
+          </View>
+        </View>
+
+        <View style={styles.infoColumn}>
+          <View style={styles.column}>
+            <Text>Release</Text>
+            {data.release_date ? (
+              <Text>{data.release_date.slice(0, 4)}</Text>
+            ) : null}
+          </View>
+          <View style={styles.column}>
+            <Text>Duration</Text>
+            <Text>
+              {Math.floor(data.runtime / 60)}h {data.runtime % 60}
+            </Text>
+          </View>
+          <View style={styles.column}>
+            <Text>Language</Text>
+            {/* {data.spoken_languages.name ? (
+              <Text>{data.spoken_languages.name}</Text>
+            ) : null} */}
+          </View>
+          <View style={styles.overview}>
+            <Text>Overview</Text>
+            <Text>{data.overview}</Text>
+          </View>
         </View>
       </View>
     );
