@@ -17,7 +17,7 @@ export default StyleSheet.create({
   },
   briefInfo: {
     flexDirection: "column",
-    marginLeft: "2%",
+    marginLeft: "4%",
     marginRight: "2%"
   },
   title: {

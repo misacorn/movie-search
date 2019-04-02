@@ -63,32 +63,32 @@ class MovieDetails extends Component {
 
         <View style={styles.infoColumn}>
           <View style={styles.column}>
-            <Text>Release</Text>
+            <Text style={{ fontWeight: "500", fontsize: "18" }}>Release</Text>
             {data.release_date ? (
               <Text>{data.release_date.slice(0, 4)}</Text>
             ) : null}
           </View>
           <View style={styles.column}>
-            <Text>Duration</Text>
+            <Text style={{ fontWeight: "500", fontsize: "18" }}>Duration</Text>
             <Text>
               {Math.floor(data.runtime / 60)}h {data.runtime % 60}
             </Text>
           </View>
           <View style={styles.column}>
-            <Text>Language</Text>
+            <Text style={{ fontWeight: "500", fontsize: "18" }}>Language</Text>
             {/* {data.spoken_languages.name ? (
               <Text>{data.spoken_languages.name}</Text>
             ) : null} */}
           </View>
         </View>
         <View style={styles.overview}>
-          <Text>Genre:</Text>
+          <Text style={{ fontWeight: "500" , fontsize: "18"}}>Genre:</Text>
           <FlatList
             data={this.state.data.genres}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
           />
-          <Text style={{ fontWeight: "bold" }}>Overview</Text>
+          <Text style={{ fontWeight: "500", fontsize: "18" }}>Overview</Text>
           <Text>{data.overview}</Text>
         </View>
       </View>
