@@ -44,9 +44,7 @@ export default StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center"
   },
-  overview: {
-    marginRight: "2%",
-    marginTop: "2%",
-    marginLeft: "2%"
+  heading: {
+    fontWeight: "500" , fontSize: 15, marginBottom: "2%"
   }
 });

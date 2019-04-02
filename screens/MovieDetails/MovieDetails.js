@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, Image, FlatList } from "react-native";
+import {get} from 'lodash'
 
 import styles from "./styles";
 
@@ -31,7 +32,11 @@ class MovieDetails extends Component {
 
   render() {
     const { data } = this.state;
-    console.log(data.spoken_languages[0]);
+
+    console.log(data)
+
+    const lang = get(data, 'spoken_languages[0].name')
+    // console.log(data.spoken_languages[0]);
     console.log(data.id)
     return (
       <View style={styles.container}>
@@ -63,32 +68,32 @@ class MovieDetails extends Component {
 
         <View style={styles.infoColumn}>
           <View style={styles.column}>
-            <Text style={{ fontWeight: "500", fontsize: "18" }}>Release</Text>
+            <Text style={styles.heading}>Release</Text>
             {data.release_date &&
               <Text>{data.release_date.slice(0, 4)}</Text>
             }
           </View>
           <View style={styles.column}>
-            <Text style={{ fontWeight: "500", fontsize: "18" }}>Duration</Text>
+            <Text style={styles.heading}>Duration</Text>
             <Text>
               {Math.floor(data.runtime / 60)}h {data.runtime % 60}
             </Text>
           </View>
           <View style={styles.column}>
-            <Text style={{ fontWeight: "500", fontsize: "18" }}>Language</Text>
-            {/* {data.spoken_languages[0].name && (
-              <Text>{data.spoken_languages[0].name}</Text>
-            )} */}
+            <Text style={styles.heading}>Language</Text>
+            {lang && (
+              <Text>{lang}</Text>
+            )}
           </View>
         </View>
         <View style={styles.overview}>
-          <Text style={{ fontWeight: "500" , fontsize: "18"}}>Genre:</Text>
+          <Text style={styles.heading}>Genre</Text>
           <FlatList
             data={this.state.data.genres}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
           />
-          <Text style={{ fontWeight: "500", fontsize: "18" }}>Overview</Text>
+          <Text style={styles.heading}>Overview</Text>
           <Text>{data.overview}</Text>
         </View>
       </View>
