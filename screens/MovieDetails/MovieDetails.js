@@ -31,8 +31,8 @@ class MovieDetails extends Component {
 
   render() {
     const { data } = this.state;
-    console.log(data.spoken_languages);
-    console.log(data.overview);
+    console.log(data.spoken_languages[0]);
+    console.log(data.id)
     return (
       <View style={styles.container}>
         <View style={styles.itemList}>
@@ -64,9 +64,9 @@ class MovieDetails extends Component {
         <View style={styles.infoColumn}>
           <View style={styles.column}>
             <Text style={{ fontWeight: "500", fontsize: "18" }}>Release</Text>
-            {data.release_date ? (
+            {data.release_date &&
               <Text>{data.release_date.slice(0, 4)}</Text>
-            ) : null}
+            }
           </View>
           <View style={styles.column}>
             <Text style={{ fontWeight: "500", fontsize: "18" }}>Duration</Text>
@@ -76,9 +76,9 @@ class MovieDetails extends Component {
           </View>
           <View style={styles.column}>
             <Text style={{ fontWeight: "500", fontsize: "18" }}>Language</Text>
-            {/* {data.spoken_languages.name ? (
-              <Text>{data.spoken_languages.name}</Text>
-            ) : null} */}
+            {/* {data.spoken_languages[0].name && (
+              <Text>{data.spoken_languages[0].name}</Text>
+            )} */}
           </View>
         </View>
         <View style={styles.overview}>
