@@ -7,6 +7,9 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column"
+    // marginTop: "4%",
+    // marginRight: "4%",
+    // marginLeft: "4%"
   },
   itemList: {
     flexDirection: "row",
@@ -36,15 +39,26 @@ export default StyleSheet.create({
   infoColumn: {
     flexDirection: "row",
     marginRight: "2%",
-    marginTop: "2%",
+    marginTop: "4%",
     marginLeft: "2%"
+  },
+  heading: {
+    fontWeight: "500",
+    fontSize: 15,
+    marginBottom: "2%"
   },
   column: {
     width: fullWidth / 3,
     flexDirection: "column",
     justifyContent: "center"
   },
-  heading: {
-    fontWeight: "500" , fontSize: 15, marginBottom: "2%"
+  genres: {
+    marginTop: "4%",
+    marginLeft: "2%"
+  },
+  overview: {
+    marginLeft: "2%",
+    marginTop: "4%",
+    marginRight: "2%"
   }
 });

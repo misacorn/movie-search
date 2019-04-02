@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, Image, FlatList } from "react-native";
-import {get} from 'lodash'
+import { get } from "lodash";
 
 import styles from "./styles";
 
@@ -32,12 +32,8 @@ class MovieDetails extends Component {
 
   render() {
     const { data } = this.state;
+    const lang = get(data, "spoken_languages[0].name");
 
-    console.log(data)
-
-    const lang = get(data, 'spoken_languages[0].name')
-    // console.log(data.spoken_languages[0]);
-    console.log(data.id)
     return (
       <View style={styles.container}>
         <View style={styles.itemList}>
@@ -50,9 +46,7 @@ class MovieDetails extends Component {
 
           <View style={styles.briefInfo}>
             <Text style={styles.title}>{data.title}</Text>
-            {data.tagline ? (
-              <Text style={styles.tagline}>{data.tagline}</Text>
-            ) : null}
+            {data.tagline && <Text style={styles.tagline}>{data.tagline}</Text>}
 
             <Text>Rating:</Text>
             <Text
@@ -69,32 +63,32 @@ class MovieDetails extends Component {
         <View style={styles.infoColumn}>
           <View style={styles.column}>
             <Text style={styles.heading}>Release</Text>
-            {data.release_date &&
-              <Text>{data.release_date.slice(0, 4)}</Text>
-            }
+            {data.release_date && (
+              <Text style={{ marginTop: "2%" }}>{data.release_date}</Text>
+            )}
           </View>
           <View style={styles.column}>
             <Text style={styles.heading}>Duration</Text>
-            <Text>
+            <Text style={{ marginTop: "2%" }}>
               {Math.floor(data.runtime / 60)}h {data.runtime % 60}
             </Text>
           </View>
           <View style={styles.column}>
             <Text style={styles.heading}>Language</Text>
-            {lang && (
-              <Text>{lang}</Text>
-            )}
+            {lang && <Text style={{ marginTop: "2%" }}>{lang}</Text>}
           </View>
         </View>
-        <View style={styles.overview}>
+        <View style={styles.genres}>
           <Text style={styles.heading}>Genre</Text>
           <FlatList
             data={this.state.data.genres}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
           />
+        </View>
+        <View style={styles.overview}>
           <Text style={styles.heading}>Overview</Text>
-          <Text>{data.overview}</Text>
+          <Text style={{ textAlign: "justify" }}>{data.overview}</Text>
         </View>
       </View>
     );

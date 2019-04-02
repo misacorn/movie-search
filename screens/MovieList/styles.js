@@ -5,6 +5,8 @@ const fullWidth = (Dimensions.get("window").width * 3) / 4;
 export default StyleSheet.create({
   container: {
     flex: 1
+    // marginLeft: "2%",
+    // marginRight: "2%"
   },
   itemList: {
     flexDirection: "row",
