@@ -64,6 +64,11 @@ class MovieList extends Component {
       }
     >
       <View>
+        {this.state.showAddToFav && (
+          <View style={styles.favButton}>
+            <HeartButton />
+          </View>
+        )}
         <View style={styles.itemList}>
           <Image
             style={styles.poster}
@@ -77,7 +82,6 @@ class MovieList extends Component {
             <Text style={{ color: item.vote_average >= 7 ? "green" : "red" }}>
               Rating: {item.vote_average}
             </Text>
-            {this.state.showAddToFav && <HeartButton />}
           </View>
         </View>
         <View style={styles.separator} />

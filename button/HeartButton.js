@@ -11,7 +11,7 @@ class HeartButton extends Component {
     return (
       <TouchableOpacity onPress={this.addToFav}>
         <View>
-          <Icon name="heart" size={18} color={"black"} />
+          <Icon name="heart-o" size={18} color={"red"} />
         </View>
       </TouchableOpacity>
     );

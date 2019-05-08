@@ -24,6 +24,12 @@ export default StyleSheet.create({
     fontWeight: "500",
     marginBottom: "5%"
   },
+  favButton: {
+    position: "absolute",
+    right: 12,
+    top: 7,
+    zIndex: 2
+  },
   poster: {
     width: 67,
     height: 100
