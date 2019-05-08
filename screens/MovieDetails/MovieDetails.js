@@ -25,6 +25,8 @@ class MovieDetails extends Component {
       .catch(err => {
         Alert.alert(err);
       });
+
+    // console.log(this.props.navigation);
   }
 
   keyExtractor = (item, index) => item.id;
@@ -58,6 +60,11 @@ class MovieDetails extends Component {
             >
               {data.vote_average} / 10
             </Text>
+            {this.state.showAddToFav && (
+              <View style={styles.favButton}>
+                <HeartButton />
+              </View>
+            )}
           </View>
         </View>
 

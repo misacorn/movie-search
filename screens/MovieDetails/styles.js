@@ -18,6 +18,11 @@ export default StyleSheet.create({
     marginTop: "2%",
     marginLeft: "2%"
   },
+  favButton: {
+    position: "absolute",
+    bottom: 0,
+    zIndex: 0
+  },
   briefInfo: {
     flexDirection: "column",
     marginLeft: "4%",
