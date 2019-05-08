@@ -3,13 +3,14 @@ import { View, Text, Image, FlatList } from "react-native";
 import { get } from "lodash";
 
 import styles from "./styles";
+import HeartButton from "../../button/HeartButton";
 
 class MovieDetails extends Component {
   static navigationOptions = {
     title: "Movie Details"
   };
 
-  state = { data: [] };
+  state = { data: [], showAddToFav: true };
 
   componentDidMount() {
     const { navigation } = this.props;
@@ -70,7 +71,7 @@ class MovieDetails extends Component {
           <View style={styles.column}>
             <Text style={styles.heading}>Duration</Text>
             <Text style={{ marginTop: "2%" }}>
-              {Math.floor(data.runtime / 60)}h {data.runtime % 60}
+              {Math.floor(data.runtime / 60)}h {data.runtime % 60}m
             </Text>
           </View>
           <View style={styles.column}>

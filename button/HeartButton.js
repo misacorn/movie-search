@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import Icon from "react-native-vector-icons";
 import { View, TouchableOpacity } from "react-native";
-import styles from "./styles";
 
 class HeartButton extends Component {
-  state={addToFavourite: false}
-  addToFav =() => {
-    
-  }
+  state = { addToFavourite: false };
+  addToFav = () => {
+    console.log(this.state);
+  };
   render() {
     return (
       <TouchableOpacity onPress={this.addToFav} style={styles.heartButton}>
