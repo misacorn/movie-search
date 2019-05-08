@@ -10,13 +10,14 @@ import {
 import { SearchBar } from "react-native-elements";
 
 import styles from "./styles";
+import HeartButton from "../../button/HeartButton";
 
 class MovieList extends Component {
   static navigationOptions = {
     title: "Home"
   };
 
-  state = { title: "", list: [] };
+  state = { title: "", list: [], showAddToFav: true };
 
   componentDidMount() {
     const url =
@@ -76,6 +77,7 @@ class MovieList extends Component {
             <Text style={{ color: item.vote_average >= 7 ? "green" : "red" }}>
               Rating: {item.vote_average}
             </Text>
+            {this.state.showAddToFav && <HeartButton />}
           </View>
         </View>
         <View style={styles.separator} />
